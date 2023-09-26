@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "npx nodemon",
     "start": "npm run build && node build",
+     "prebuild": "chmod +x ./node_modules/.bin/tsc",
     "build": "rimraf ./build && npx tsc",
     "lint": "npx eslint ./src",
     "format": "npx eslint ./src --fix"
