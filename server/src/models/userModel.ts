@@ -1,6 +1,6 @@
 
 import { Model, Table, Column, DataType, PrimaryKey, Default, IsEmail, Unique, AllowNull, BeforeSave, BeforeUpdate } from 'sequelize-typescript';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 
 const SALT_ROUNDS = 10;
