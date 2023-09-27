@@ -15,7 +15,9 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
      "experimentalDecorators": true,  // <-- Add this
-    "emitDecoratorMetadata": true    // <-- Add this
+    "emitDecoratorMetadata": true ,
+    "typeRoots": ["./node_modules/@types", "./src/@types"],
+       
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"],

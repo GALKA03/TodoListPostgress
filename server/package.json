@@ -12,7 +12,6 @@
   "scripts": {
     "dev": "npx nodemon",
     "start": "npm run build && node build",
-
     "build": "rm -rf ./build && npx tsc",
     "lint": "npx eslint ./src",
     "format": "npx eslint ./src --fix"
@@ -21,7 +20,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -33,7 +31,6 @@
     "sequelize-typescript": "^2.1.5"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
     "@types/bcryptjs": "^2.4.4",
     "@types/cookie-parser": "^1.4.4",
     "@types/cors": "^2.8.14",
