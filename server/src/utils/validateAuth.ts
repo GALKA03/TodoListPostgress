@@ -1,7 +1,8 @@
-import Joi from 'joi';
+ import Joi  from 'joi';
 
 
-export const registrationSchema: Joi.ObjectSchema = Joi.object({
+
+ export const registrationSchema = Joi.object({
   user_name: Joi.string()
     .min(2)
     .max(15)
@@ -17,7 +18,7 @@ export const registrationSchema: Joi.ObjectSchema = Joi.object({
     .required(),
 });
 
-export const loginSchema: Joi.ObjectSchema = Joi.object({
+export const loginSchema = Joi.object({
   user_email: Joi.string()
     .email()
     .required(),

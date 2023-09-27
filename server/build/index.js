@@ -1,5 +1,5 @@
 import express from 'express';
-import sequelize from "./db/database.js";
+import client from './db/database.js';
 import router from "./router/index.js";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
@@ -21,12 +21,14 @@ app.use((err, req, res, _next) => {
 });
 const startServer = async () => {
     try {
-        await sequelize.authenticate();
-        console.log("✅ PostgreSQL Connection has been established successfully.");
-        await sequelize.sync();
-        console.log("✅ Database synchronized.");
-        app.listen(PORT, () => {
-            console.log(`Server running on http://localhost:${PORT}/`);
+        client.query('SELECT NOW()', (err) => {
+            if (err) {
+                throw err;
+            }
+            console.log("✅ PostgreSQL Connection has been established successfully.");
+            app.listen(PORT, () => {
+                console.log(`Server running on http://localhost:${PORT}/`);
+            });
         });
     }
     catch (err) {
