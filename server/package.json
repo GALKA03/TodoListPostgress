@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "npx nodemon",
     "start": "npm run build && node build",
-"build": "rimraf ./build && npx tsc",
+"build": "npx rimraf ./build && npx tsc",
     "lint": "npx eslint ./src",
     "format": "npx eslint ./src --fix"
   },
