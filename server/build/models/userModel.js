@@ -8,7 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Model, Table, Column, DataType, PrimaryKey, Default, IsEmail, Unique, AllowNull, BeforeSave, BeforeUpdate } from 'sequelize-typescript';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 const SALT_ROUNDS = 10;
 let User = class User extends Model {
     static async hashPassword(instance) {

@@ -3,6 +3,7 @@ import { Model, Table, Column, DataType, PrimaryKey, Default, IsEmail, Unique, A
 import bcrypt from 'bcryptjs';
 
 
+
 const SALT_ROUNDS = 10;
 
 @Table
