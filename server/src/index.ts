@@ -1,13 +1,16 @@
 
 import express,{ Request, Response, NextFunction} from 'express';
-import sequelize from "./db/database.js";
+// import sequelize from "./db/database.js";
+import client from './db/database.js';
 import router from "./router/index.js";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
 
-import 'dotenv/config'
+import 'dotenv/config';
 
 const PORT = 8088;
+
+
 
 export const app = express();
 
@@ -33,24 +36,45 @@ app.use((err: Error, req: Request, res: Response, _next: NextFunction): void => 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
 });
 
+
 const startServer = async () => {
-  try {
-    await sequelize.authenticate();
-    console.log("✅ PostgreSQL Connection has been established successfully.");
-    
-    await sequelize.sync();
-    console.log("✅ Database synchronized.");
+    try {
+      
+        client.query('SELECT NOW()', (err) => {
+            if (err) {
+                throw err;
+            }
+            console.log("✅ PostgreSQL Connection has been established successfully.");
 
-    app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}/`);
-    });
-
-  } catch (err) {
-    console.error("❌ Unable to start the server:", err);
-  }
+            app.listen(PORT, () => {
+                console.log(`Server running on http://localhost:${PORT}/`);
+            });
+        });
+    } catch (err) {
+        console.error("❌ Unable to start the server:", err);
+    }
 };
 
 startServer();
+
+// const startServer = async () => {
+//     try {
+//         await sequelize.authenticate();
+//         console.log("✅ PostgreSQL Connection has been established successfully.");
+
+//         await sequelize.sync();
+//         console.log("✅ Database synchronized.");
+
+//         app.listen(PORT, () => {
+//             console.log(`Server running on http://localhost:${PORT}/`);
+//         });
+
+//     } catch (err) {
+//         console.error("❌ Unable to start the server:", err);
+//     }
+// };
+
+// startServer();
 
 
    
