@@ -2,14 +2,14 @@ import Joi from 'joi';
 
 
 export const registrationSchema: Joi.ObjectSchema = Joi.object({
-  name: Joi.string()
+  user_name: Joi.string()
     .min(2)
     .max(15)
     .required(),
-  email: Joi.string()
+  user_email: Joi.string()
     .email()
     .required(),
-  password: Joi.string()
+  user_password: Joi.string()
     .min(6)
     .max(10)
     .pattern(/[A-Z]/)
