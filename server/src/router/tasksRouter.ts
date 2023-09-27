@@ -6,7 +6,6 @@ import {
   deleteTask,
   updateTask,
 } from "../controllers/tasks.js";
-// import { authenticateToken } from "../middlwares/authMiddlware";
 
 
 export default (router: express.Router) => {
