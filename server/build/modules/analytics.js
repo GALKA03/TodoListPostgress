@@ -1,4 +1,2 @@
-export function analystics(name) {
-    console.log(name, 'analystiks works correct');
-}
+export {};
 //# sourceMappingURL=analytics.js.map
