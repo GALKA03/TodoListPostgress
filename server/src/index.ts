@@ -5,8 +5,7 @@ import router from "./router/index.js";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
 
-import * as dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config'
 
 const PORT = 8088;
 
