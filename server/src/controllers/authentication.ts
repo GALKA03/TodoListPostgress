@@ -35,7 +35,7 @@ export const registerUser = async (req: Request, res: Response) => {
     const userData = req.body;
     const createdUser = await registerService(userData);
 
-    const {  ...userResponse } = createdUser.dataValues;
+    const {  ...userResponse } = createdUser.getDataValue;
 
     res
       .status(201)
