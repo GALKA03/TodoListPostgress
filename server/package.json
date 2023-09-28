@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "npx nodemon",
-    "start": "npm run build && node build",
+   "start": "node build/index.js",
     "prebuild": "npx tsc",
     "build": "npx rimraf ./build",
     "lint": "npx eslint ./src",
