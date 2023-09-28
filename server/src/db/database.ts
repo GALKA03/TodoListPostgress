@@ -1,25 +1,54 @@
-import pkg from 'pg';
-const { Client } = pkg;
+import { Sequelize } from 'sequelize-typescript';
+import User from "../models/userModel.js"
 
-import 'dotenv/config';
+ import 'dotenv/config';
+import TasksModel from "../models/tasksModel.js"
 
-const client = new Client({
-  user: process.env.POSTGRES_USER,
-  host: process.env.POSTGRES_HOST,
-  database: process.env.POSTGRES_DATABASE,
-  password: process.env.POSTGRES_PASSWORD,
-  port: Number(process.env.POSTGRES_PORT),
+const sequelize = new Sequelize({
+    dialect: 'postgres',
+    database: process.env.POSTGRES_DB,
+    username: process.env.POSTGRES_USER,
+    password: String(process.env.POSTGRES_PASSWORD),
+    host: process.env.POSTGRES_HOST,
+    port: Number(process.env.POSTGRES_PORT),
+    models: [User, TasksModel], // Define models here
+    logging: console.log       // Enable SQL-level logging
 });
+if (!process.env.POSTGRES_DB) console.log("POSTGRES_DATABASE is missing");
+if (!process.env.POSTGRES_USER) console.log("POSTGRES_USER is missing");
+if (!process.env.POSTGRES_PASSWORD) console.log("POSTGRES_PASSWORD is missing");
+if (!process.env.POSTGRES_HOST) console.log("POSTGRES_HOST is missing");
+if (!process.env.POSTGRES_PORT) console.log("POSTGRES_PORT is missing");
 
-client.connect((err) => {
-  if (err) {
-    console.error('Failed to connect:', err);
-    throw err;
-  }
-  console.log("Connected to PostgreSQL successfully!");
-});
+if (!process.env.POSTGRES_DB || !process.env.POSTGRES_USER || !process.env.POSTGRES_PASSWORD || !process.env.POSTGRES_HOST || !process.env.POSTGRES_PORT) {
+    throw new Error("Please ensure all Postgres environment variables are set!");
+}
 
-export default client;
+// if (!process.env.POSTGRES_DATABASE || !process.env.POSTGRES_USER || !process.env.POSTGRES_PASSWORD || !process.env.POSTGRES_HOST || !process.env.POSTGRES_PORT) {
+//     throw new Error("Please ensure all Postgres environment variables are set!");
+// }
+// import pkg from 'pg';
+// const { Client } = pkg;
+
+// import 'dotenv/config';
+
+// const client = new Client({
+//   user: process.env.POSTGRES_USER,
+//   host: process.env.POSTGRES_HOST,
+//   database: process.env.POSTGRES_DATABASE,
+//   password: process.env.POSTGRES_PASSWORD,
+//   port: Number(process.env.POSTGRES_PORT),
+// });
+
+// client.connect((err) => {
+//   if (err) {
+//     console.error('Failed to connect:', err);
+//     throw err;
+//   }
+//   console.log("Connected to PostgreSQL successfully!");
+// });
+
+// export default client;
 
 
 // import { Sequelize } from 'sequelize-typescript';
@@ -38,7 +67,7 @@ export default client;
 //     logging: console.log
 // });
 
-// export default sequelize;
+export default sequelize;
 
 
 
