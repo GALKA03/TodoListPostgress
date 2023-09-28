@@ -6,13 +6,14 @@ import TasksModel from "../models/tasksModel.js"
 
 const sequelize = new Sequelize({
     dialect: 'postgres',
+    protocol: 'postgres',
+  logging: false, 
     database: process.env.POSTGRES_DB,
     username: process.env.POSTGRES_USER,
     password: String(process.env.POSTGRES_PASSWORD),
     host: process.env.POSTGRES_HOST,
     port: Number(process.env.POSTGRES_PORT),
-    models: [User, TasksModel], // Define models here
-    logging: console.log       // Enable SQL-level logging
+    models: [User, TasksModel],     
 });
 if (!process.env.POSTGRES_DB) console.log("POSTGRES_DATABASE is missing");
 if (!process.env.POSTGRES_USER) console.log("POSTGRES_USER is missing");
