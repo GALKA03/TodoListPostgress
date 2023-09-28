@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "npx nodemon",
-  "start": "npx ts-node src/index.ts",
+  "start": "chmod +x ./node_modules/.bin/ts-node && ./node_modules/.bin/ts-node src/index.ts",
 "build": "chmod +x ./node_modules/.bin/tsc && rm -rf ./build && ./node_modules/.bin/tsc",
     
 "lint": "npx eslint ./src",
