@@ -30,7 +30,7 @@ export const registerUser = async (req, res) => {
     try {
         const userData = req.body;
         const createdUser = await registerService(userData);
-        const { ...userResponse } = createdUser.dataValues;
+        const { ...userResponse } = createdUser.getDataValue;
         res
             .status(201)
             .json({ message: "User registered successfully", user: userResponse });
