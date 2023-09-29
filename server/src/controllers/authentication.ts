@@ -35,7 +35,11 @@ export const registerUser = async (req: Request, res: Response) => {
     const userData = req.body;
     const createdUser = await registerService(userData);
 
-    const {  ...userResponse } = createdUser.getDataValue;
+    // Retrieve all the data values of the created user.
+    const userResponse = { ...createdUser.get() };
+
+    // Exclude password (assuming you have a password field) before sending it back.
+    delete userResponse.password;
 
     res
       .status(201)
@@ -46,3 +50,4 @@ export const registerUser = async (req: Request, res: Response) => {
       .json({ message: "Registration failed", error: error });
   }
 };
+
