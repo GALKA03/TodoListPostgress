@@ -9,17 +9,33 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "20.6.3",
-    "@types/react": "18.2.22",
+    "@babel/core": "^7.22.20",
+    "@babel/preset-env": "^7.22.20",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/inter": "^5.0.8",
+    "@mui/icons-material": "^5.14.8",
+    "@mui/joy": "^5.0.0-beta.5",
+    "@mui/material": "^5.14.8",
+    "@types/node": "20.6.0",
+    "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.16",
+    "autoprefixer": "^10.4.15",
     "eslint": "8.49.0",
-    "eslint-config-next": "13.5.2",
-    "next": "13.5.2",
-    "postcss": "8.4.30",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.2.2"
+    "eslint-config-next": "13.4.19",
+    "formik": "^2.4.4",
+    "next": "^13.5.1",
+    "postcss": "8.4.29",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "5.2.2",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.22.15",
+    "@types/react-beautiful-dnd": "^13.1.4",
+    "babel-eslint": "^10.1.0"
   }
 }
