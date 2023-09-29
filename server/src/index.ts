@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: ['https://task-list-server-5fsl.onrender.com', 'http://localhost:3000'],
   credentials: true,  
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],

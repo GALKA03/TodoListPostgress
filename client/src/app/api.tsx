@@ -28,12 +28,12 @@ interface TaskResponse {
   status: "inProgress" | "done"; 
 } 
 
-const BASE_URL = 'http://localhost:8088';
+const BASE_URL = 'https://task-list-server-5fsl.onrender.com';
 
 
 export const getAllTasks = async () => {
     try {
-        let res= await fetch(`http://localhost:8088/tasks/`,{ cache: 'force-cache' })
+       let res = await fetch(`${BASE_URL}/tasks/`, { cache: 'force-cache' });
     
         console.log(res.body)
         if (!res.ok) {
@@ -57,7 +57,7 @@ export const addNewTask = async (title: string, text: string): Promise<TaskRespo
 
   try {
     // Make the fetch request
-    const response = await fetch("http://localhost:8088/tasks/", {
+    const response = await fetch(`${BASE_URL}/tasks/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ console.log('fetch response',response)
 
 export const deleteTask = async (id: string): Promise<void> => {
   try {
-    const response = await fetch(`http://localhost:8088/tasks/${id}`, {
+    const response = await fetch(`${BASE_URL}/tasks/${id}`, {
       method: "DELETE",
       credentials: 'include'
     });
@@ -110,7 +110,7 @@ export const deleteTask = async (id: string): Promise<void> => {
 
 export const updateNewTask = async (taskId: string, newTitle: string, newText: string) => {
   try {
-    const response = await fetch(`http://localhost:8088/tasks/${taskId}`, {
+    const response = await fetch(`${BASE_URL}/tasks/${taskId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
