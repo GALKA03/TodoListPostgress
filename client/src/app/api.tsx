@@ -28,7 +28,7 @@ interface TaskResponse {
   status: "inProgress" | "done"; 
 } 
 
-const BASE_URL = 'https://task-list-server-5fsl.onrender.com';
+const BASE_URL = 'http://task-list-server-5fsl.onrender.com';
 
 
 export const getAllTasks = async () => {
