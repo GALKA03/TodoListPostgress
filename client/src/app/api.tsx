@@ -192,7 +192,7 @@ export async function fetchLogin(user_email: string, user_password:string): Prom
    
 
   try {
-    const response = await fetch(`/auth/login`, {
+    const response = await fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

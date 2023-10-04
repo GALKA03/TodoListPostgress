@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 app.use(cors({
-  origin: ['https://task-list-server-5fsl.onrender.com'],
+  origin: ['https://todo-list-postgress.vercel.app'],
   credentials: true,  
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -56,7 +56,7 @@ const startServer = async () => {
         console.log("✅ Database synchronized.");
 
         app.listen(PORT, () => {
-            console.log(`Server running on http://localhost:${PORT}/`);
+            console.log(`Server running on https://task-list-server-5fsl.onrender.com/`);
         });
 
     } catch (err) {
