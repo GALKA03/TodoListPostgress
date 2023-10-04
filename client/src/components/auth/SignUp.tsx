@@ -57,7 +57,7 @@ const SignUp = () => {
 
   try {
     const responseData = await fetchRegister(data.name, data.email, data.password);
-
+console.log('handleSignUpfetch', responseData)
     // Check for error in the message
     if (responseData.message && responseData.message.includes("error")) {
       throw new Error(responseData.message);

@@ -28,7 +28,7 @@ interface TaskResponse {
   status: "inProgress" | "done"; 
 } 
 
-const BASE_URL = 'http://task-list-server-5fsl.onrender.com';
+const BASE_URL = 'https://task-list-server-5fsl.onrender.com';
 
 
 export const getAllTasks = async () => {
@@ -189,9 +189,10 @@ export async function fetchLogin(user_email: string, user_password:string): Prom
     user_password,
  }
   console.log("Sending payload login:", payload);
+   
 
   try {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
+    const response = await fetch(`/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
