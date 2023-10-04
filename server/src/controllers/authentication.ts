@@ -6,10 +6,8 @@ import {
 } from "../services/authServices.js";
 
 export const loginUser = async (req: Request, res: Response) => {
-  try {
-    const { user_email, user_password } = req.body;
-    console.log(req.body);
-    const result = await loginUserService(user_email, user_password);
+   try {
+    const result = await loginUserService(req.body);
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: "Login failed", error: error });

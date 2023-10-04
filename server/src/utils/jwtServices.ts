@@ -7,13 +7,11 @@ const SECRET_KEY = process.env.JWT_SECRET || 'secret'; // Always keep your secre
 type UserPayload = {
     id:string; 
     username: string;
-    userId: string;
     userEmail: string;
 };
 
-// Function to generate a token using the user payload
 export const generateToken = (user: UserPayload): string => {
-    return jwt.sign(user, SECRET_KEY, { expiresIn: '1h' }); // token expires in 1 hour
+  return jwt.sign(user, SECRET_KEY, { expiresIn: '1h' });
 };
 
 // Function to verify a token and return its decoded payload

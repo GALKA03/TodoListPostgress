@@ -5,7 +5,6 @@ import { Request as ExpressRequest, Response, NextFunction } from 'express';
 type UserPayload = {
     id?: string;  // made optional with '?'
     username?: string;  // made optional with '?'
-    userId: string;
     userEmail: string;
 };
 

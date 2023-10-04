@@ -21,7 +21,7 @@ export const validateHandler = async (req: Request, res: Response) => {
 
     const decodedToken = validateAndVerifyToken(token);
 
-    if (!decodedToken.userId || !decodedToken.userEmail) {
+    if (!decodedToken.id || !decodedToken.userEmail) {
       throw new Error('Invalid token contents');
     }
 
