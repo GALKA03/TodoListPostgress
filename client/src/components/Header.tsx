@@ -1,5 +1,5 @@
 "use client";
-import {InputBase,  Button,Paper } from "@mui/material";
+import {InputBase,  Button,Paper, Box } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSearch } from "../app/context/SearchContext";
@@ -26,8 +26,16 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-around items-center bg-transparent w-full p-4">
-     {isLoggedIn && (
+    <Box
+      component="header"
+  display="flex"
+  justifyContent="space-between"
+  alignItems="center"
+  bgcolor="transparent"
+  width="100%"
+  p={4}
+>
+      {isLoggedIn && (
         <Button variant="outlined" color="primary" onClick={handleLogout}>
           Logout
         </Button>
@@ -63,7 +71,7 @@ const Header = () => {
           <SearchIcon />
         </IconButton>
       </Paper>
-    </header>
+    </Box>
   );
 };
 export default Header;
