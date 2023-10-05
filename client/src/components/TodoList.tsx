@@ -104,7 +104,7 @@ useEffect(() => {
         <Box>
           <AddButton onTaskAdd={handleTaskAddition} />
 
-          <Box display="flex" height="100vh" justifyContent="space-between" alignItems="center">
+          <Box display="flex"  justifyContent="space-between" alignItems="center">
             {["inProgress", "done"].map((status, index) => (
               <Droppable key={status} droppableId={status}>
                 {(provided) => (
@@ -115,7 +115,9 @@ useEffect(() => {
                   flex: 1,
                   margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
                   padding: 2,
-                   background: 'transparent',
+                  background: 'transparent',
+                  height:"100vh"
+                   
                 }}
               >
                     <Typography variant="h6">
