@@ -10,7 +10,7 @@ import {
   
 } from "react-beautiful-dnd";
 import { useSearch } from "../app/context/SearchContext";
-
+import { Box, Paper, Typography, List, ListItem } from "@mui/material";
 export interface TaskProps {
   id: string;
   title: string;
@@ -101,22 +101,26 @@ useEffect(() => {
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
      {isClient && ( 
-        <div>
+        <Box>
           <AddButton onTaskAdd={handleTaskAddition} />
 
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
             {["inProgress", "done"].map((status, index) => (
               <Droppable key={status} droppableId={status}>
                 {(provided) => (
-                  <div
-                    ref={provided.innerRef}
-                    style={{
-                      flex: 1,
-                      margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
-                    }}
-                  >
-                    <h2>{status === "inProgress" ? "In Progress" : "Done"}</h2>
-                    <ul {...provided.droppableProps}>
+                   <Paper
+                ref={provided.innerRef}
+                elevation={3}
+                sx={{
+                  flex: 1,
+                  margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
+                  padding: 2,
+                }}
+              >
+                    <Typography variant="h6">
+                  {status === "inProgress" ? "In Progress" : "Done"}
+                </Typography>
+                    <List {...provided.droppableProps}>
                       {filteredTasks
                         .filter((task) => task.status === status)
                         .map((task, index) => (
@@ -127,7 +131,7 @@ useEffect(() => {
                             isDragDisabled={false}
                           >
                             {(provided) => (
-                              <li
+                            <ListItem
                                 ref={provided.innerRef} // set ref here
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
@@ -142,18 +146,18 @@ useEffect(() => {
                                   onUpdate={handleTaskUpdate}
                                   onDelete={handleTaskDeletion}
                                 />
-                              </li>
+                              </ListItem>
                             )}
                           </Draggable>
                         ))}
                       {provided.placeholder}
-                    </ul>
-                  </div>
+                    </List>
+                  </Paper>
                 )}
               </Droppable>
             ))}
-          </div>
-        </div>
+          </Box>
+        </Box>
      )} 
     </DragDropContext>
    );
