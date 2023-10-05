@@ -106,60 +106,58 @@ useEffect(() => {
 
           <Box display="flex" justifyContent="space-between" alignItems="center">
             {["inProgress", "done"].map((status, index) => (
-             <Droppable key={status} droppableId={status}>
-  {(provided) => (
-    <Paper
-      elevation={3}
-      sx={{
-        flex: 1,
-        margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
-        padding: 2,
-        background: 'transparent', // Set Paper's background to transparent
-      }}
-    >
-      <Typography variant="h6">
-        {status === "inProgress" ? "In Progress" : "Done"}
-      </Typography>
-
-      <div
-        ref={provided.innerRef}
-        {...provided.droppableProps}
-        style={{ marginTop: "1rem" }} // Optional spacing
-      >
-        {filteredTasks
-          .filter((task) => task.status === status)
-          .map((task, index) => (
-            <Draggable
-              key={task.id}
-              draggableId={task.id.toString()}
-              index={index}
-              isDragDisabled={false}
-            >
-              {(provided) => (
-                <ListItem
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  sx={{ background: 'transparent', boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)' }} // Add transparency and shadow
-                >
-                  <Task
-                    handleMarkAsDone={handleMarkAsDone}
-                    title={task.title}
-                    text={task.text}
-                    id={task.id}
-                    taskStatus={task.status}
-                    onUpdate={handleTaskUpdate}
-                    onDelete={handleTaskDeletion}
-                  />
-                </ListItem>
-              )}
-            </Draggable>
-          ))}
-        {provided.placeholder}
-      </div>
-    </Paper>
-  )}
-</Droppable>
+              <Droppable key={status} droppableId={status}>
+                {(provided) => (
+                   <Paper
+                ref={provided.innerRef}
+                elevation={3}
+                sx={{
+                  flex: 1,
+                  margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
+                  padding: 2,
+                   background: 'transparent',
+                }}
+              >
+                    <Typography variant="h6">
+                  {status === "inProgress" ? "In Progress" : "Done"}
+                    </Typography>
+                    
+                    <List {...provided.droppableProps}>
+                      {filteredTasks
+                        .filter((task) => task.status === status)
+                        .map((task, index) => (
+                          <Draggable
+                            key={task.id}
+                            draggableId={task.id.toString()}
+                            index={index}
+                            isDragDisabled={false}
+                          >
+                            {(provided) => (
+                            <ListItem
+                                ref={provided.innerRef} // set ref here
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                sx={{ background: 'transparent', boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)' }} 
+                              >
+                                <Task
+                                  handleMarkAsDone={handleMarkAsDone}
+                    
+                                  title={task.title}
+                                  text={task.text}
+                                  id={task.id}
+                                  taskStatus={task.status}
+                                  onUpdate={handleTaskUpdate}
+                                  onDelete={handleTaskDeletion}
+                                />
+                              </ListItem>
+                            )}
+                          </Draggable>
+                        ))}
+                      {provided.placeholder}
+                    </List>
+                  </Paper>
+                )}
+              </Droppable>
             ))}
           </Box>
         </Box>
