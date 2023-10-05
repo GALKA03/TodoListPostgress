@@ -115,6 +115,7 @@ useEffect(() => {
                   flex: 1,
                   margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
                   padding: 2,
+                   background: 'transparent',
                 }}
               >
                     <Typography variant="h6">
@@ -135,6 +136,7 @@ useEffect(() => {
                                 ref={provided.innerRef} // set ref here
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
+                                sx={{ background: 'transparent', boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)' }} 
                               >
                                 <Task
                                   handleMarkAsDone={handleMarkAsDone}
