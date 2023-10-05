@@ -14,8 +14,6 @@ const PORT = 8088;
 
 export const app = express();
 
-
-
 app.use(express.json());
 app.use(cookieParser())
 

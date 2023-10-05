@@ -40,10 +40,11 @@ const LoginSchema = Yup.object().shape({
       .required("Password is required"),
 });
   const handleLogin = async (
-  values: LoginFormValues,
+  values: LoginFormValues, 
   formikHelpers: FormikHelpers<LoginFormValues>
 ) => {
   console.log("Attempting to login...");
+
   const { setSubmitting, resetForm } = formikHelpers;
 
   try {
@@ -54,7 +55,9 @@ const LoginSchema = Yup.object().shape({
       router.push("/tasks");
       console.log(responseData);
     }
+
     resetForm();
+
   } catch (err) {
     console.error("Login error:", err);
     alert("Failed to login. Please check your credentials.");

@@ -1,3 +1,5 @@
+import { type } from "os";
+
 // import { TaskProps } from "@/components/TodoList";
 interface TaskPayload {
   title: string;
@@ -5,14 +7,7 @@ interface TaskPayload {
   status: "inProgress";
 }
 
-interface LoginResponse {
-  token: string;
-  user: {
-    user_id: string;
-    user_name: string;
-    user_email: string;
-  };
-}
+
 type RegistrationResponse = {
   user?: {
     user_id: string;
@@ -176,22 +171,22 @@ export const fetchRegister = async (user_name: string, user_email: string, user_
   }
 }
 
-interface LoginResponse {
+type LoginResponse = {
   token: string;
-  user_name: string;
   user_email: string;
-  // any other properties you expect from the server...
-}
-export async function fetchLogin(user_email: string, user_password: string): Promise<LoginResponse>{
+  hashed_password?: string; // I'm including this based on your provided structure, but you should consider not returning a hashed password for security reasons.
+};
+
+export async function fetchLogin(user_email: string, user_password: string): Promise<LoginResponse> {
   const payload = {
     user_email,
     user_password,
- }
+  };
+
   console.log("Sending payload login:", payload);
-   
 
   try {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
+    const response = await fetch(`https://task-list-server-5fsl.onrender.com/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -216,11 +211,12 @@ export async function fetchLogin(user_email: string, user_password: string): Pro
 
     console.log('responseData', responseData);
     return responseData;
+
   } catch (error) {
     console.error('Error while logging in user');
     throw error;
   }
-};
+}
 
 export const logoutFetch = async() => {
   try {
