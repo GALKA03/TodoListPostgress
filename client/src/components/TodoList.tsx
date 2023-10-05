@@ -116,7 +116,7 @@ useEffect(() => {
                   margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
                   padding: 2,
                   background: 'transparent',
-                  height:"100vh"
+                 
                    
                 }}
               >
@@ -124,7 +124,7 @@ useEffect(() => {
                   {status === "inProgress" ? "In Progress" : "Done"}
                     </Typography>
                     
-                    <List {...provided.droppableProps}>
+                    <List {...provided.droppableProps} sx={{ height:"100vh"}}>
                       {filteredTasks
                         .filter((task) => task.status === status)
                         .map((task, index) => (
