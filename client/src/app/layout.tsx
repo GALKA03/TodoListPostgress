@@ -21,8 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="">
         <ThemeRegistry options={{ key: "mui" }}>
-          <SearchProvider>
-           
+          <SearchProvider>  
             {children}
           </SearchProvider>
         </ThemeRegistry>

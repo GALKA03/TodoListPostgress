@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <section className="flex justify-around items-center bg-transparent w-full p-4">
+    <header className="flex justify-around items-center bg-transparent w-full p-4">
      {isLoggedIn && (
         <Button variant="outlined" color="primary" onClick={handleLogout}>
           Logout
@@ -63,7 +63,7 @@ const Header = () => {
           <SearchIcon />
         </IconButton>
       </Paper>
-    </section>
+    </header>
   );
 };
 export default Header;

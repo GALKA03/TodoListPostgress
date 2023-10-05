@@ -4,11 +4,15 @@ import { getAllTasks } from "../api"
 import Header from "@/components/Header"
 const TasksPage = async() => {
     const tasks = await getAllTasks()
-    return (
-        <div className="py-10 px-20 mx-auto"> 
-<Header/>
+    return ( 
+        <>
+    <Header/>
+        <main>
+          
             <TodoList tasks={tasks} />
-        </div> 
+
+            </main>
+            </>
     )
 }
 export default TasksPage
