@@ -7,7 +7,6 @@ import {
   Droppable,
   Draggable,
   DropResult,
-  
 } from "react-beautiful-dnd";
 import { useSearch } from "../app/context/SearchContext";
 import { Box, Paper, Typography, List, ListItem } from "@mui/material";
@@ -26,9 +25,9 @@ const TodoList: React.FC<TodoListProps> = ({ tasks: initialTasks }) => {
   const [tasks, setTasks] = useState<TaskProps[]>(initialTasks);
   const [isClient, setIsClient] = useState(false);
   const { searchTerm } = useSearch();
-useEffect(() => {
-  setIsClient(true);
-}, []);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   const filteredTasks = tasks.filter(
     (task) =>
       task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -100,31 +99,33 @@ useEffect(() => {
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-     {isClient && ( 
-        <Box>
+      {isClient && (
+        <Box width="100%">
           <AddButton onTaskAdd={handleTaskAddition} />
 
-          <Box display="flex"  justifyContent="space-between" alignItems="center">
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
             {["inProgress", "done"].map((status, index) => (
               <Droppable key={status} droppableId={status}>
                 {(provided) => (
-                   <Paper
-                ref={provided.innerRef}
-                elevation={3}
-                sx={{
-                  flex: 1,
-                  margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
-                  padding: 2,
-                  background: 'transparent',
-                 
-                   
-                }}
-              >
+                  <Paper
+                    ref={provided.innerRef}
+                    elevation={3}
+                    sx={{
+                      flex: 1,
+                      margin: index === 0 ? "0 16px 0 0" : "0 0 0 16px",
+                      padding: 2,
+                      background: "transparent",
+                    }}
+                  >
                     <Typography variant="h6">
-                  {status === "inProgress" ? "In Progress" : "Done"}
+                      {status === "inProgress" ? "In Progress" : "Done"}
                     </Typography>
-                    
-                    <List {...provided.droppableProps} sx={{ height:"100vh"}}>
+
+                    <List {...provided.droppableProps} sx={{ height: "100vh" }}>
                       {filteredTasks
                         .filter((task) => task.status === status)
                         .map((task, index) => (
@@ -135,15 +136,18 @@ useEffect(() => {
                             isDragDisabled={false}
                           >
                             {(provided) => (
-                            <ListItem
+                              <ListItem
                                 ref={provided.innerRef} // set ref here
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                sx={{ background: 'transparent', boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)' }} 
+                                sx={{
+                                  background: "transparent",
+                                  boxShadow:
+                                    "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
+                                }}
                               >
                                 <Task
                                   handleMarkAsDone={handleMarkAsDone}
-                    
                                   title={task.title}
                                   text={task.text}
                                   id={task.id}
@@ -163,9 +167,9 @@ useEffect(() => {
             ))}
           </Box>
         </Box>
-     )} 
+      )}
     </DragDropContext>
-   );
+  );
 };
 
 export default TodoList;

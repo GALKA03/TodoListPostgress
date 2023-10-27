@@ -8,47 +8,13 @@ import { useState } from "react";
 import Form from "./Form";
 import { TaskProps } from "./TodoList";
 
-// const ButtonRoot = React.forwardRef(function ButtonRoot(
-//   props: React.PropsWithChildren<{}>,
-//   ref: React.ForwardedRef<any>
-// ) {
-//   const { children, ...other } = props;
 
-//   return (
-//     <svg
-     
-//       height="50"
-//       viewBox="0 0 150 50"
-//       preserveAspectRatio="xMidYMid meet"
-//       {...other}
-//       ref={ref}
-//     >
-//       <polygon points="0,50 0,0 150,0 150,50" className="bg w-full" />
-//       <polygon points="0,50 0,0 150,0 150,50" className="borderEffect w-full" />
-//       <foreignObject x="30%" y="3" width="50%" height="50">
-//         <div className="content">{children}</div>
-//       </foreignObject>
-//     </svg>
-//   );
-// });
 
-// const SvgButton = React.forwardRef(function SvgButton(
-//   props: ButtonProps,
-//   ref: React.ForwardedRef<any>
-// ) {
-//   return (
-//     <Button
-//       className="w-full mb-4"
-//       {...props}
-//       slots={{ root: CustomButtonRoot }}
-//       ref={ref}
-//     />
-//   );
-// });
-interface AddButtonProps {
+type AddButtonProps = {
   onTaskAdd: (newTask: TaskProps) => void;
-}
-const AddButton: React.FC<AddButtonProps> = ({ onTaskAdd }) => {
+  variant?: 'contained' | 'outlined' | 'text'; // If using Material-UI's Button component
+};
+const AddButton: React.FC<AddButtonProps> = ({ onTaskAdd, variant = "contained" }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const handleOpen = () => {
@@ -61,13 +27,34 @@ const AddButton: React.FC<AddButtonProps> = ({ onTaskAdd }) => {
 
   return (
     <>
-      <button className="w-full text-white bg-gradient-to-r from-purple-500 to-pink-500 
-               transform transition-transform duration-300 ease-in-out 
-               hover:scale-105 hover:text-red-300 hover:bg-gradient-to-l 
-               focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 
-               font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleOpen}>
-        Add task <Add />
-      </button>
+     <Button 
+    // variant={variant}
+    sx={{
+        width: "100%",
+        background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)", // Gradient from your class
+        color: "white",
+        '&:hover': {
+            backgroundColor: "transparent",
+            transform: "scale(1.05)",
+            color: "red.300",
+            background: "linear-gradient(45deg, #FF8E53 30%, #FE6B8B 90%)",
+        },
+        '&:focus-visible': {
+            boxShadow: "0 0 0 4px rgba(186, 134, 252, 0.5)", // Equivalent of focus:ring-4 focus:ring-purple-200
+        },
+        textTransform: "none",
+        borderRadius: "8px",
+        fontSize: "0.875rem", // Equivalent of text-sm
+        px: 5,
+        py: 2.5,
+        mr: 2,
+        mb: 2
+    }}
+    onClick={handleOpen}
+>
+    Add task 
+</Button>
+
       {open && (
         <ModalAdd open={open} handleClose={handleClose}>
           <Form onTaskAdd={onTaskAdd} onCloseModal={handleClose} />
